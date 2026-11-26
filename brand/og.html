@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kalmarium Apps social image</title>
+<style>
+  :root{--paper:#F4EFE6;--ink:#14181A;--muted:#5A5F5C;--line:#D8D0C2;--brand:#0F5257;--amber:#F2B134;--amber-ink:#B5730A}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1200px;height:630px;overflow:hidden;background:var(--paper)}
+  body{position:relative;font-family:system-ui,"Segoe UI",Roboto,sans-serif;color:var(--ink)}
+  .tone{position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 40% 45%,#F8F4EC 0%,#F4EFE6 60%,#ECE5D6 100%)}
+  .frame{position:absolute;inset:28px;border:2px solid var(--line)}
+  .mono{font-family:ui-monospace,"Cascadia Mono",Consolas,monospace;text-transform:uppercase;letter-spacing:.2em}
+  .left{position:absolute;left:84px;top:96px;width:560px}
+  .logo{display:block;width:96px;height:96px}
+  .kicker{margin-top:44px;font-size:17px;color:var(--brand)}
+  h1{margin-top:14px;font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif;font-weight:700;font-size:96px;line-height:1;color:var(--brand);letter-spacing:-.01em}
+  .rule{position:relative;margin-top:34px;height:2px;width:470px;background:var(--line)}
+  .rule i{position:absolute;left:0;top:-7px;width:16px;height:16px;border-radius:50%;background:var(--amber)}
+  p{margin-top:28px;font-size:24px;line-height:1.4;color:var(--ink);max-width:470px}
+  .url{position:absolute;left:84px;bottom:62px;font-size:16px;color:var(--muted)}
+  .grid{position:absolute;right:84px;top:92px;display:grid;grid-template-columns:repeat(3,116px);gap:20px 26px}
+  .grid div{position:relative}
+  .grid img{display:block;width:116px;height:116px;border-radius:26px;box-shadow:0 10px 22px rgba(20,24,26,.22)}
+  .grid span{display:block;margin-top:12px;text-align:center;font-size:14px;color:var(--amber-ink);letter-spacing:.16em}
+</style>
+</head>
+<body>
+  <div class="tone"></div>
+  <div class="frame"></div>
+  <div class="left">
+    <svg class="logo" viewBox="0 0 100 100" aria-hidden="true">
+      <rect width="100" height="100" rx="18" fill="#0F5257"/>
+      <g stroke="#F4EFE6" stroke-width="11" stroke-linecap="round" fill="none">
+        <line x1="34" y1="25" x2="34" y2="75"/><line x1="37" y1="52" x2="60" y2="33"/><line x1="40" y1="49" x2="66" y2="75"/>
+      </g>
+      <circle cx="70" cy="23" r="6.5" fill="#F2B134"/>
+    </svg>
+    <div class="kicker mono">Android apps and games</div>
+    <h1>Kalmarium</h1>
+    <div class="rule"><i></i></div>
+    <p>Nine small apps: games, learning apps and tools.</p>
+  </div>
+  <div class="url mono">apps.kalmarium.com</div>
+  <div class="grid">
+    <div><img src="src/icon-knowdrop.webp" alt=""><span class="mono">01</span></div>
+    <div><img src="src/icon-mahjong365.webp" alt=""><span class="mono">02</span></div>
+    <div><img src="src/icon-tankageddon.webp" alt=""><span class="mono">03</span></div>
+    <div><img src="src/icon-lingua-pairs.webp" alt=""><span class="mono">04</span></div>
+    <div><img src="src/icon-bilingua.webp" alt=""><span class="mono">05</span></div>
+    <div><img src="src/icon-prep4cert.webp" alt=""><span class="mono">06</span></div>
+    <div><img src="src/icon-network-troubleshooter.webp" alt=""><span class="mono">07</span></div>
+    <div><img src="src/icon-lazy-intercom.webp" alt=""><span class="mono">08</span></div>
+    <div><img src="src/icon-crack-a-fold.webp" alt=""><span class="mono">09</span></div>
+  </div>
+</body>
+</html>

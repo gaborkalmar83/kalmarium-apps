@@ -1,0 +1,496 @@
+{
+  "site": {
+    "url": "https://apps.kalmarium.com",
+    "name": "Kalmarium Apps",
+    "org": "Kalmarium Services",
+    "legalName": "Kalmarium Services B.V.",
+    "email": "kalmariumservices@gmail.com",
+    "city": "Almere",
+    "country": "NL",
+    "playDeveloper": "https://play.google.com/store/apps/developer?id=Kalmarium+Services",
+    "youtubeChannel": "https://www.youtube.com/@kalmariumservices",
+    "homeTitle": "Kalmarium Apps: Android Games, Learning Apps and Tools",
+    "homeDescription": "Nine Android apps and games by Kalmarium Services: daily trivia, mahjong, a tank shooter, language learning, Microsoft exam practice and network tools. On Google Play.",
+    "h1": "Android apps and games by Kalmarium",
+    "lead": "Nine small Android apps from a Dutch studio: games, learning apps and tools. Each page says plainly what it costs and what it does.",
+    "howWeBuild": [
+      {
+        "title": "No account to start",
+        "text": "Every app can be played or tried without signing up. Knowdrop only creates a simple online account if you pick a nickname for friends and leaderboards."
+      },
+      {
+        "title": "No forced subscription",
+        "text": "Eight of the nine apps have no subscription. Knowdrop offers an optional Plus subscription, and it is never needed to play."
+      },
+      {
+        "title": "Small ads only",
+        "text": "Where an app shows ads, they are small banners that stay out of the way, and a one-time purchase removes them. Bilingua and Crack A Fold have none."
+      },
+      {
+        "title": "Prices stated up front",
+        "text": "What is free, what costs money and what an ad-free purchase does is written on this site and on each Google Play listing."
+      }
+    ],
+    "about": "Kalmarium Services B.V. is a small independent studio in Almere, the Netherlands. We make Android apps and games and publish them on Google Play. Questions, ideas or a mistake to report? Email kalmariumservices@gmail.com.",
+    "aiNote": "Some artwork on this site is AI-generated."
+  },
+  "categories": [
+    {
+      "id": "games",
+      "name": "Games",
+      "path": "/games/",
+      "title": "Android Games by Kalmarium: Trivia, Mahjong, Tank Shooter",
+      "description": "Three Android games you can play offline: Knowdrop daily trivia quiz, Mahjong365 mahjong solitaire and Tankageddon, a tank shooter with 99 boss fights. Free to start.",
+      "h1": "Offline Android games: trivia, mahjong and a tank shooter",
+      "intro": "Three games for different moods: a daily trivia quiz to play alone or with friends, a calm mahjong solitaire with big tiles, and an arcade tank shooter with a full campaign. All three can be played without an internet connection and without an account. Looking for a game that teaches something? Lingua Pairs, a word-matching memory game, lives under Learning.",
+      "faq": [
+        {
+          "q": "Which of these games work offline?",
+          "a": "All three. Knowdrop and Mahjong365 play offline, and the whole Tankageddon campaign plays without internet. Knowdrop's friends, leaderboards and live parties need a connection."
+        },
+        {
+          "q": "Are they free?",
+          "a": "Yes, all three are free to start. Knowdrop and Tankageddon show a small banner ad and Mahjong365 shows one small banner with no pop-up ads. A purchase removes the ads in each: Knowdrop offers Remove ads forever, Mahjong365 a lifetime Premium and Tankageddon a one-time Premium."
+        },
+        {
+          "q": "Do I need an account?",
+          "a": "No. Mahjong365 and Tankageddon need no account, and progress stays on your device. Knowdrop can be played without one; picking a nickname and avatar creates a simple online account for friends and leaderboards, with no email address or password."
+        },
+        {
+          "q": "Which one should I start with?",
+          "a": "Start with Knowdrop for a daily habit or a quiz night with friends, Mahjong365 for a calm puzzle with large tiles, and Tankageddon for arcade action with boss fights."
+        }
+      ]
+    },
+    {
+      "id": "learning",
+      "name": "Learning",
+      "path": "/learning/",
+      "title": "Learning Apps for Android: Languages and Microsoft Exams",
+      "description": "Learn words with the Lingua Pairs memory game, read books in two languages with Bilingua, and practise for 47 Microsoft certification exams with Prep 4 Cert.",
+      "h1": "Learning apps for Android: languages and Microsoft exams",
+      "intro": "Three apps for learning by doing. Lingua Pairs builds vocabulary with a memory game, Bilingua lets you read your own books with a translation under every sentence, and Prep 4 Cert prepares you for Microsoft certification exams with original practice questions. None of them needs an account or a subscription.",
+      "faq": [
+        {
+          "q": "Which app is best for learning vocabulary?",
+          "a": "Lingua Pairs. You match a word with its translation, and each pair becomes a photo card with the spoken word. It covers German, Spanish, French, Dutch, Hungarian and English. Bilingua suits you better if you want to learn from real books."
+        },
+        {
+          "q": "Can I read my own books in two languages?",
+          "a": "Yes, with Bilingua. It opens your own EPUB and PDF files and shows every sentence with its translation underneath. Offline translation packs cover 59 languages. Books with DRM cannot be opened, and a scanned PDF without a text layer cannot be translated."
+        },
+        {
+          "q": "Is Prep 4 Cert an exam dump?",
+          "a": "No. Every question is written fresh from the official skills outline of the exam, and nothing is copied from a real exam. It is an independent study aid, not affiliated with or endorsed by Microsoft."
+        },
+        {
+          "q": "Do these apps need an account or a subscription?",
+          "a": "No account for any of them, and no subscription. Lingua Pairs and Prep 4 Cert are free with a small banner that a one-time purchase removes. Bilingua has no ads, a 14-day free trial and then one payment."
+        }
+      ]
+    },
+    {
+      "id": "tools",
+      "name": "Tools and fun",
+      "path": "/tools/",
+      "title": "Android Tools and Fun: WiFi Analyzer, Intercom, Fold Prank",
+      "description": "Ultimate Network Troubleshooter for WiFi and speed checks, Lazy Intercom for calling the family without shouting, and Crack A Fold, a prank for foldable phones.",
+      "h1": "Android tools and fun: WiFi analyzer, family intercom and a fold prank",
+      "intro": "Two practical apps and one joke. Ultimate Network Troubleshooter finds out what is wrong with your WiFi, Lazy Intercom turns your family's phones into a voice intercom, and Crack A Fold makes a foldable phone look broken for a moment. None of them needs an account.",
+      "faq": [
+        {
+          "q": "Is it legal to scan a network with Ultimate Network Troubleshooter?",
+          "a": "Only scan networks you own or have permission to test. The device and port scanners send packets to the hosts you choose. What the app measures stays on your phone, and there is no account."
+        },
+        {
+          "q": "Does Lazy Intercom need internet?",
+          "a": "Not for messages. On your home WiFi the phones talk directly to each other, with no server of ours in between. The free version shows one small banner that needs a connection to load. It is Android only."
+        },
+        {
+          "q": "Does Crack A Fold damage my phone?",
+          "a": "No. It only draws a fake crack on top of the screen and plays a sound and a short vibration. Nothing is damaged and no settings change. You repair it with a tap on the four corners or an auto-repair timer."
+        },
+        {
+          "q": "What do these apps cost?",
+          "a": "Ultimate Network Troubleshooter and Lazy Intercom are free with one small banner, and a one-time purchase removes it (EUR 1.99 for Lazy Intercom). Crack A Fold is a paid app, about EUR 1.99 and it varies by country, with no ads."
+        }
+      ]
+    }
+  ],
+  "apps": [
+    {
+      "id": "knowdrop",
+      "name": "Knowdrop",
+      "descriptor": "daily trivia quiz",
+      "category": "games",
+      "package": "com.kalmarium.quizdrop",
+      "site": "https://knowdrop.kalmarium.com/",
+      "hook": "A fresh Daily Drop of 10 fact-checked questions every day, plus picture rounds and friend battles",
+      "bullets": [
+        "Daily Drop: 10 questions, easy to hard, the same for everyone",
+        "13 categories, 12,000+ questions, flag and picture quizzes",
+        "Plays offline; battle friends with a room code or QR code"
+      ],
+      "audience": "Quiz fans, friends and families",
+      "price": "Free, with ads; optional purchases turn ads off",
+      "offerPrice": "0",
+      "offerCurrency": "EUR",
+      "schemaType": "VideoGame",
+      "applicationCategory": "GameApplication",
+      "accent": "#16a34a",
+      "long": "Knowdrop gives you a new trivia round every day. The Daily Drop is ten questions, from easy to hard, and everyone gets the same ten, so you can compare scores with friends. Between drops there are quick rounds in 13 categories, themed packs, Picture Reveal, Speed Run and Sudden Death. Questions are written with AI help and then checked by a separate fact-check, and every answer comes with a fun fact and a source link. Play alone, pass one phone around, or host an online game that friends join with a code, a QR code or a PIN. It works offline, and there are no lives, no energy and no waiting timers.",
+      "who": "Quiz fans who like a short daily habit, and friends or families who want a quick trivia game together.",
+      "pick": "Knowdrop for a daily trivia habit or a quiz night with friends.",
+      "alt": {
+        "icon": "Knowdrop app icon",
+        "tile": "Knowdrop logo, a smiling water drop with a green brain, with the line Fresh trivia, every day and a collage of quiz pictures",
+        "shots": [
+          "Knowdrop home screen with today's Daily Drop and a Play now button",
+          "A Picture Reveal question showing a pixelated landmark with four answer options",
+          "Hosting an online Knowdrop game with a room code, a PIN and a QR code"
+        ]
+      },
+      "aiArt": true,
+      "video": {
+        "file": "video/knowdrop.mp4",
+        "poster": "video/knowdrop-poster.webp",
+        "duration": 34,
+        "uploadDate": "2026-11-15",
+        "width": 1280,
+        "height": 720,
+        "bytes": 1066100,
+        "title": "Knowdrop: daily trivia quiz, trailer",
+        "description": "A short trailer for Knowdrop, the daily trivia quiz for Android: Picture Reveal, quick rounds, fun facts, 13 categories and games with friends."
+      },
+      "youtube": "GaIAvPnITpM"
+    },
+    {
+      "id": "mahjong365",
+      "name": "Mahjong365",
+      "descriptor": "daily mahjong solitaire",
+      "category": "games",
+      "package": "com.kalmarium.mahjong365",
+      "site": "https://gaborkalmar83.github.io/mahjong365-info/",
+      "hook": "Calm mahjong solitaire with a new level for every day of the year, large tiles and no pop-up ads",
+      "bullets": [
+        "365 levels in 12 worlds, plus a new Daily Challenge",
+        "Large, clear tiles; unlimited undo and free shuffle",
+        "Plays offline; one small banner, one optional Premium"
+      ],
+      "audience": "Relaxed puzzle players who like large tiles",
+      "price": "Free, one small banner, no pop-up ads; optional lifetime Premium",
+      "offerPrice": "0",
+      "offerCurrency": "EUR",
+      "schemaType": "VideoGame",
+      "applicationCategory": "GameApplication",
+      "accent": "#D9412B",
+      "long": "Mahjong365 is classic mahjong solitaire played the quiet way. Match two identical free tiles, clear the board and move on, with no timer that makes you fail. There is a level for every day of the year, spread over twelve worlds drawn in a soft ink and paper style, from a snow garden to a lantern festival. A Daily Challenge gives every player the same board, with streaks and monthly badges, and Keen Eye mode asks you to find the true pair among near-identical tiles. Tiles are large and symbols bold, so it suits long evenings and tired eyes. It plays offline, with one small banner and one optional lifetime Premium purchase.",
+      "who": "Relaxed puzzle players, including anyone who wants big tiles and a calm screen.",
+      "pick": "Mahjong365 for a calm daily puzzle with big tiles.",
+      "alt": {
+        "icon": "Mahjong365 app icon",
+        "tile": "Mahjong365 title on a cream ink-wash background beside five mahjong tiles with plants, a sun and a wave",
+        "shots": [
+          "A Mahjong365 board of large mahjong tiles on day 100",
+          "The Mahjong365 world list with ink-wash pictures such as Snow Garden and Lantern Festival",
+          "The Daily Challenge screen with a streak counter and a calendar"
+        ]
+      },
+      "aiArt": true,
+      "video": null,
+      "youtube": ""
+    },
+    {
+      "id": "tankageddon",
+      "name": "Tankageddon",
+      "descriptor": "offline tank shooter",
+      "category": "games",
+      "package": "com.kalmarium.tankageddon",
+      "site": "https://tankageddon.kalmarium.com/",
+      "hook": "One tank against the alien invasion: 99 levels, 99 boss fights, all playable offline",
+      "bullets": [
+        "10 worlds, day and night missions, 99 different alien bosses",
+        "Upgrade your tank and grab short-lived alien tech",
+        "Twin-stick controls, 3 layouts, no account, no internet needed"
+      ],
+      "audience": "Arcade shooter fans who want an offline campaign",
+      "price": "Free, small banner; one-time Premium removes ads",
+      "offerPrice": "0",
+      "offerCurrency": "EUR",
+      "schemaType": "VideoGame",
+      "applicationCategory": "GameApplication",
+      "accent": "#3fd0c4",
+      "long": "In 2091 the aliens came, and one tank is left. Tankageddon is a top-down tank shooter: drive with one thumb, aim and fire with the other, and fight your way from a fallen city to the heart of the Hive. Every map ends with a different boss, 99 in all, and the missions in between ask you to storm alien bases, escort supply trucks and free captured humans. Upgrade cannon, armour, shield and engine, grab alien tech that melts or swarms your enemies, and play by day or in pitch-black night. The whole campaign works offline and progress stays on your device. Art and audio were made with the help of AI tools.",
+      "who": "Arcade shooter fans who want a full campaign on a phone, foldable or tablet, with no connection needed.",
+      "pick": "Tankageddon for arcade action with boss fights.",
+      "alt": {
+        "icon": "Tankageddon app icon",
+        "tile": "A lone tank fires at an alien mothership above a burning ruined city",
+        "shots": [
+          "Tankageddon boss fight with the tank firing at a giant alien boss",
+          "A night mission in Tankageddon lit by the tank's headlights",
+          "The Tankageddon garage screen with tank upgrades from one barrel to four"
+        ]
+      },
+      "aiArt": true,
+      "video": {
+        "file": "video/tankageddon.mp4",
+        "poster": "video/tankageddon-poster.webp",
+        "duration": 60,
+        "uploadDate": "2026-11-20",
+        "width": 1280,
+        "height": 720,
+        "bytes": 2416798,
+        "title": "Tankageddon: offline tank shooter, trailer",
+        "description": "A 60 second trailer for Tankageddon: the alien invasion, 99 bosses, 10 worlds and the last tank on Earth."
+      },
+      "youtube": ""
+    },
+    {
+      "id": "lingua-pairs",
+      "name": "Lingua Pairs",
+      "descriptor": "language memory game",
+      "category": "learning",
+      "package": "com.kalmarium.linguapairs",
+      "site": "https://lingua.kalmarium.com/",
+      "hook": "The memory game where you match a word with its translation and get a photo card with sound",
+      "bullets": [
+        "German, Spanish, French, Dutch, Hungarian or English, any pair",
+        "2,200+ words per language, six levels from A1 to C1",
+        "Import your own Anki decks or two-column word lists"
+      ],
+      "audience": "Language learners and visual learners",
+      "price": "Free, small banner; one-time purchase removes ads",
+      "offerPrice": "0",
+      "offerCurrency": "EUR",
+      "schemaType": "MobileApplication",
+      "applicationCategory": "GameApplication",
+      "accent": "#F0553A",
+      "long": "Lingua Pairs turns the classic memory card game into vocabulary practice. Instead of two identical cards you match a word in your language with its translation. When you find a pair, the two cards merge into one picture card with a real photo, both words and the spoken pronunciation, so you see, read and hear the word together. Choose any pair of six languages, pick levels from A1 to C1 and eighteen categories, or import your own Anki decks. Rounds are short enough for a coffee break, and you can play alone or at an online table with two to four friends. Word lists were created with AI help and checked automatically.",
+      "who": "Language learners who like short, playful practice, and visual learners who remember a word better with a photo.",
+      "pick": "Lingua Pairs to build vocabulary in short, playful rounds.",
+      "alt": {
+        "icon": "Lingua Pairs app icon",
+        "tile": "Lingua Pairs title beside an illustration of two smiling people holding cards among European landmarks",
+        "shots": [
+          "Lingua Pairs home screen with levels from A1 beginner and a button to play with friends",
+          "A matched pair showing a photo of a flower with the German word die Blume",
+          "The result screen with three stars, pairs, moves, time and the words matched"
+        ]
+      },
+      "aiArt": true,
+      "video": {
+        "file": "video/lingua-pairs.mp4",
+        "poster": "video/lingua-pairs-poster.webp",
+        "duration": 40,
+        "uploadDate": "2026-11-15",
+        "width": 1280,
+        "height": 720,
+        "bytes": 724928,
+        "title": "Lingua Pairs: the memory game that teaches languages",
+        "description": "A promo video for Lingua Pairs: flip two cards, match a word with its translation and get a photo card with the spoken word."
+      },
+      "youtube": "MUHGI4thGqQ"
+    },
+    {
+      "id": "bilingua",
+      "name": "Bilingua",
+      "descriptor": "bilingual book reader",
+      "category": "learning",
+      "package": "com.lingua.reader",
+      "site": "https://bilingua.kalmarium.com/",
+      "hook": "Read your own EPUB and PDF books with every sentence translated underneath, even offline",
+      "bullets": [
+        "Translation under each sentence; offline packs for 59 languages",
+        "Long-press a word to look it up, save it, send it to Anki",
+        "No ads, no account; 14-day free trial, then pay once"
+      ],
+      "audience": "Language learners who read books",
+      "price": "No ads; 14-day free trial, then a one-time purchase",
+      "offerPrice": "0",
+      "offerCurrency": "EUR",
+      "schemaType": "MobileApplication",
+      "applicationCategory": "EducationalApplication",
+      "accent": "#1a6b4b",
+      "long": "Bilingua is a book reader for people who learn a language by reading. Open any EPUB or PDF of your own and every sentence appears with its translation directly underneath, on its own line, on the same line or hidden until you tap. Translation runs on your phone with offline packs for 59 languages, so it works without a connection. Long-press a word to see its meaning and the sentence it came from, save it, and review it in the built-in flashcards or send it to AnkiDroid. There are no ads, no account and no tracking. Try everything free for 14 days, then unlock once with a single payment. There is no subscription.",
+      "who": "Language learners who read books and want translations and flashcards without leaving the page.",
+      "pick": "Bilingua to learn a language by reading your own books.",
+      "alt": {
+        "icon": "Bilingua app icon",
+        "tile": "Bilingua Reader with the line Every sentence, translated underneath and a phone showing an English book with Dutch translation",
+        "shots": [
+          "Bilingua showing an English book with the Dutch translation under each sentence",
+          "Word lookup sheet with the translation, the sentence and buttons to save the word",
+          "A built-in flashcard with Again, Hard, Good and Easy buttons"
+        ]
+      },
+      "aiArt": true,
+      "video": {
+        "file": "video/bilingua.mp4",
+        "poster": "video/bilingua-poster.webp",
+        "duration": 46,
+        "uploadDate": "2026-11-15",
+        "width": 1280,
+        "height": 720,
+        "bytes": 1225252,
+        "title": "Bilingua: read real books in the language you are learning",
+        "description": "A promo video for Bilingua: a translation under every sentence, word lookup, flashcards and offline translation."
+      },
+      "youtube": "ditH32F_NWM"
+    },
+    {
+      "id": "prep4cert",
+      "name": "Prep 4 Cert",
+      "descriptor": "Microsoft exam practice",
+      "category": "learning",
+      "package": "com.kalmarium.prep4cert",
+      "site": "https://prep4cert.kalmarium.com/",
+      "hook": "Original practice questions for 47 Microsoft certification exams, with a free 15-question preview each",
+      "bullets": [
+        "Answers that teach, with a Study next link to Microsoft Learn",
+        "Tests of 10 to 100 questions; repeat the ones you missed",
+        "Free job interview practice for four roles"
+      ],
+      "audience": "IT professionals and students",
+      "price": "Free preview of 15 questions per exam; one-time purchase per bank; small banner in the free version",
+      "offerPrice": "0",
+      "offerCurrency": "EUR",
+      "schemaType": "MobileApplication",
+      "applicationCategory": "EducationalApplication",
+      "accent": "#3ed6b8",
+      "long": "Prep 4 Cert is a study app for Microsoft certification exams, from AZ-900 and AZ-104 to SC-900 and PL-300, 47 exams in all. Every question is written fresh from the exam's official skills outline, so you learn the subject instead of memorising answers. It is not an exam dump. Each answer has a short and a long explanation and a Study next pointer to the official documentation. Build tests of 10 to 100 questions, choose from four answer modes, repeat your mistakes and follow your progress by topic. Every exam has a free 15-question preview, and a full bank is a one-time purchase with no subscription. An independent study aid, not affiliated with or endorsed by Microsoft.",
+      "who": "IT professionals and students preparing for a Microsoft exam. Questions are drafted with AI assistance, checked against Microsoft's documentation and reviewed by the author, a Microsoft Certified Trainer.",
+      "pick": "Prep 4 Cert if you are preparing for a Microsoft exam. Independent study aid, not affiliated with or endorsed by Microsoft.",
+      "alt": {
+        "icon": "Prep 4 Cert app icon",
+        "tile": "Prep 4 Cert logo and the line Practice questions, not an exam dump beside three dark phone screens",
+        "shots": [
+          "Prep 4 Cert home screen with exam readiness and a Start practice test button",
+          "The question library with search, saved and mistakes filters and topic chips",
+          "An answer screen with the correct answer, a short answer, a long answer and a link to Microsoft documentation"
+        ]
+      },
+      "aiArt": true,
+      "video": null,
+      "youtube": ""
+    },
+    {
+      "id": "network-troubleshooter",
+      "name": "Ultimate Network Troubleshooter",
+      "descriptor": "WiFi analyzer and network tools",
+      "category": "tools",
+      "package": "com.kalmarium.networktroubleshooter",
+      "site": "https://netcheck.kalmarium.com/",
+      "hook": "WiFi analyzer, speed test, port scanner and network map in one Android app, with no account",
+      "bullets": [
+        "WiFi channel analyzer and one network health score",
+        "Speed test, walk-around heat map, device and port scanner",
+        "Network map exports to PDF or draw.io; iPerf3, DNS and Whois"
+      ],
+      "audience": "Home users with a flaky connection, IT and network people",
+      "price": "Free, one small banner; one-time purchase removes it",
+      "offerPrice": "0",
+      "offerCurrency": "EUR",
+      "schemaType": "MobileApplication",
+      "applicationCategory": "UtilitiesApplication",
+      "accent": "#00A88F",
+      "long": "Ultimate Network Troubleshooter works out what is wrong with your WiFi, which channel is best, how fast your connection really is and what is on your network. It starts with a plain-language view, with an Advanced switch for dBm and channel widths. You get a channel analyzer for 2.4, 5 and 6 GHz, a 4G and 5G antenna map, a speed test with ping and jitter, and a walk mode that maps signal strength around your home. The scanner lists devices and open ports, and the network map saves as a PDF or a draw.io file. There is no account, and what the app measures stays on your phone. Only scan networks you own or may test.",
+      "who": "Home users who want to know why the WiFi is slow, and IT or network people who want quick checks in their pocket.",
+      "pick": "Ultimate Network Troubleshooter to find out why your WiFi is slow.",
+      "alt": {
+        "icon": "Ultimate Network Troubleshooter app icon",
+        "tile": "Ultimate Network Troubleshooter title beside a phone showing a network health score of 92",
+        "shots": [
+          "The Network Health screen with a score of 92 and WiFi and mobile signal in dBm",
+          "Speed test result showing download, upload, ping and jitter",
+          "Cellular screen with a map of nearby antennas and the serving cell details"
+        ]
+      },
+      "aiArt": false,
+      "video": {
+        "file": "video/network-troubleshooter.mp4",
+        "poster": "video/network-troubleshooter-poster.webp",
+        "duration": 50,
+        "uploadDate": "2026-11-14",
+        "width": 1280,
+        "height": 720,
+        "bytes": 947476,
+        "title": "Ultimate Network Troubleshooter: WiFi analyzer and network tools, promo",
+        "description": "A short promo for Ultimate Network Troubleshooter, the Android app with a WiFi analyzer, speed test, port scanner and network map."
+      },
+      "youtube": "TF6OvqklJd0"
+    },
+    {
+      "id": "lazy-intercom",
+      "name": "Lazy Intercom",
+      "descriptor": "family intercom app",
+      "category": "tools",
+      "package": "com.kalmarium.lazyintercom",
+      "site": "https://intercom.kalmarium.com/",
+      "hook": "Hold a button, speak, and the family hears it, even with headphones in and the screen off",
+      "bullets": [
+        "Plays through earbuds and wakes a locked phone with a Got it card",
+        "No accounts; phones find each other on your home WiFi",
+        "Also plays on Google Cast, DLNA and Home Assistant speakers"
+      ],
+      "audience": "Households on one WiFi network",
+      "price": "Free, one small banner; Remove ads is EUR 1.99 once",
+      "offerPrice": "0",
+      "offerCurrency": "EUR",
+      "schemaType": "MobileApplication",
+      "applicationCategory": "CommunicationApplication",
+      "accent": "#E8553A",
+      "long": "Lazy Intercom turns the Android phones in your home into a voice intercom. Install it on each family phone, join with a QR code, then hold the button and speak. The other phones wake up, play a short sound and then your actual voice, even with the screen off and earbuds in,. If nobody taps Got it within 45 seconds, the message replays once, louder. Messages are encrypted end to end, travel directly between phones over your home WiFi and need no account or server of ours. It can also play on Google Cast, DLNA and Home Assistant speakers. It is Android only, and messages are recorded clips, not a live call.",
+      "who": "Households on one WiFi, especially with teens in headphones, several floors or a home office. It is a new app, so feedback from real households is welcome.",
+      "pick": "Lazy Intercom to call the family without shouting.",
+      "alt": {
+        "icon": "Lazy Intercom app icon",
+        "tile": "Illustration of a person cooking in a kitchen while another relaxes on a sofa in headphones, with sound ripples between them",
+        "shots": [
+          "A locked phone lit by a full-screen Message from Anna card with a Got it button",
+          "The message history list with Delivered and Heard ticks",
+          "Household screen with an invite QR code for adding another phone"
+        ]
+      },
+      "aiArt": true,
+      "video": null,
+      "youtube": ""
+    },
+    {
+      "id": "crack-a-fold",
+      "name": "Crack A Fold",
+      "descriptor": "foldable phone prank",
+      "category": "tools",
+      "package": "com.kalmarium.crackafold",
+      "site": "https://crackafold.kalmarium.com/",
+      "hook": "A prank for foldable phones: they fold it, the screen seems to crack. Nothing is damaged.",
+      "bullets": [
+        "The crack lands on your phone's own crease, with sound and a jolt",
+        "You choose when it breaks; repair it with one tap",
+        "No ads, no accounts, no data, no internet connection"
+      ],
+      "audience": "Owners of foldable phones",
+      "price": "Paid, about EUR 1.99 (varies by country); no ads, no data",
+      "offerPrice": "1.99",
+      "offerCurrency": "EUR",
+      "schemaType": "MobileApplication",
+      "applicationCategory": "EntertainmentApplication",
+      "accent": "#2EC4B6",
+      "long": "Crack A Fold is a prank for foldable Android phones. Arm it, hand your phone to a friend, and the moment they fold it they hear a sharp crack, feel a short jolt and see a broken crease across the big screen. The hinge position is measured on your own device, so the crack follows your real fold line, and you can pick a hairline crack, a black line, spreading ink or a dead half. You choose when it triggers, with a grace period before it arms. Nothing is damaged and no settings change: repair it with a tap on the four corners or an auto-repair timer. It is a paid app with no ads and no data collection.",
+      "who": "Owners of foldable phones with a sense of humour and a friend who is easy to fool.",
+      "pick": "Crack A Fold if you own a foldable phone and want a harmless prank.",
+      "alt": {
+        "icon": "Crack A Fold app icon",
+        "tile": "Crack A Fold title beside a dark foldable phone with a cracked crease",
+        "shots": [
+          "Black ink spreading from the crease of a foldable phone screen",
+          "A black line cracking down the exact crease of the phone",
+          "The Crack A Fold screen for choosing when it breaks and arming the prank"
+        ]
+      },
+      "aiArt": true,
+      "video": null,
+      "youtube": ""
+    }
+  ]
+}
