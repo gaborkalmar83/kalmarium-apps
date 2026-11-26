@@ -8,8 +8,8 @@ All facts and copy live in one file, `data/apps.json`. `tools/build.py` turns it
 
 | Output | Made by |
 |---|---|
-| `index.html`, `games/index.html`, `learning/index.html`, `tools/index.html` | `tools/build.py` |
-| `privacy-policy.html`, `404.html`, `sitemap.xml` | `tools/build.py` |
+| `index.html`, `games/index.html`, `learning/index.html`, `tools/index.html`, `about/index.html`, `press/index.html` | `tools/build.py` |
+| `privacy-policy.html`, `404.html`, `sitemap.xml` (with video entries), `data/lastmod.json` | `tools/build.py` |
 | `assets/site.css`, `assets/site.js` | written by hand |
 | `CNAME`, `robots.txt`, `app-ads.txt` | written by hand |
 
@@ -32,6 +32,8 @@ If `vnu.jar` (the Nu HTML checker) is on `VNU_JAR` or passed with `--vnu`, `chec
 - No third-party requests except the cookie-free visit script `https://overwatch.kalmarium.com/h.js`; no cookies, no storage, no web fonts.
 - Budgets: CSS 14 KB, JS 3 KB, home HTML 40 KB, home first view 450 KB and 25 requests; image and video sizes as in `docs/PLAN.md`.
 - No ratings, review counts or download numbers, in the page or in the JSON-LD.
+- `data/lastmod.json` remembers a hash per page; `lastmod` in the sitemap moves only when that page's HTML changed.
+- Every page links to /about/ and /press/; one company spelling; one Organization node with `alternateName`.
 - Every link to Google Play carries the right package id and `referrer=utm_source%3Dhub%26utm_medium%3D<page>`.
 
 ## Layout
@@ -39,6 +41,8 @@ If `vnu.jar` (the Nu HTML checker) is on `VNU_JAR` or passed with `--vnu`, `chec
 ```
 data/apps.json              single source of app facts and copy
 img/<id>/                   icon.webp, tile.webp, shot-1..3.webp
+img/press/<id>/             icon-512.png, screenshot-1..3.jpg (press kit downloads)
+img/google-play-badge.png   official Google Play badge, unchanged (source: kalmarium-factory/brand)
 video/                      self-hosted clips and posters (click-to-load, no embeds)
 brand/                      developer icon, Play header and og image sources
 assets/                     site.css, site.js, logo, favicons

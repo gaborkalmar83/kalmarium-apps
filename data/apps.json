@@ -9,10 +9,10 @@
     "country": "NL",
     "playDeveloper": "https://play.google.com/store/apps/developer?id=Kalmarium+Services",
     "youtubeChannel": "https://www.youtube.com/@kalmariumservices",
-    "homeTitle": "Kalmarium Apps: Android Games, Learning Apps and Tools",
-    "homeDescription": "Nine Android apps and games by Kalmarium Services: daily trivia, mahjong, a tank shooter, language learning, Microsoft exam practice and network tools. On Google Play.",
+    "homeTitle": "Kalmarium Apps: Android Apps and Games by Kalmarium Services",
+    "homeDescription": "Nine Android apps and games by Kalmarium Services of Almere, the Netherlands: trivia, mahjong, a tank shooter, language learning, exam practice, network tools.",
     "h1": "Android apps and games by Kalmarium",
-    "lead": "Nine small Android apps from a Dutch studio: games, learning apps and tools. Each page says plainly what it costs and what it does.",
+    "lead": "Nine small Android apps and games from Kalmarium Services, an independent studio in the Netherlands: games, learning apps and tools. Each page says plainly what it costs and what it does.",
     "howWeBuild": [
       {
         "title": "No account to start",
@@ -40,7 +40,7 @@
       "name": "Games",
       "path": "/games/",
       "title": "Android Games by Kalmarium: Trivia, Mahjong, Tank Shooter",
-      "description": "Three Android games you can play offline: Knowdrop daily trivia quiz, Mahjong365 mahjong solitaire and Tankageddon, a tank shooter with 99 boss fights. Free to start.",
+      "description": "Three Android games you can play offline: Knowdrop trivia quiz, Mahjong365 solitaire and Tankageddon, a tank shooter with 99 boss fights.",
       "h1": "Offline Android games: trivia, mahjong and a tank shooter",
       "intro": "Three games for different moods: a daily trivia quiz to play alone or with friends, a calm mahjong solitaire with big tiles, and an arcade tank shooter with a full campaign. All three can be played without an internet connection and without an account. Looking for a game that teaches something? Lingua Pairs, a word-matching memory game, lives under Learning.",
       "faq": [
@@ -312,7 +312,7 @@
       "schemaType": "MobileApplication",
       "applicationCategory": "EducationalApplication",
       "accent": "#1a6b4b",
-      "long": "Bilingua is a book reader for people who learn a language by reading. Open any EPUB or PDF of your own and every sentence appears with its translation directly underneath, on its own line, on the same line or hidden until you tap. Translation runs on your phone with offline packs for 59 languages, so it works without a connection. Long-press a word to see its meaning and the sentence it came from, save it, and review it in the built-in flashcards or send it to AnkiDroid. There are no ads, no account and no tracking. Try everything free for 14 days, then unlock once with a single payment. There is no subscription.",
+      "long": "Bilingua is a book reader for people who learn a language by reading. Open any EPUB or PDF of your own and every sentence appears with its translation directly underneath, on its own line, on the same line or hidden until you tap. Translation runs on your phone with offline packs for 59 languages, so it works without a connection. Long-press a word to see its meaning and the sentence it came from, save it, and review it in the built-in flashcards or send it to AnkiDroid. No ads and no account, and no analytics or tracking software of our own. Try everything free for 14 days, then unlock once with a single payment. There is no subscription.",
       "who": "Language learners who read books and want translations and flashcards without leaving the page.",
       "pick": "Bilingua to learn a language by reading your own books.",
       "alt": {

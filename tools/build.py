@@ -27,10 +27,14 @@ OG_W, OG_H = 1200, 630
 
 # Title (25-65 chars) and description (70-170 chars) per page, from docs/PLAN.md section D.
 SEO = {
-    "home": ("Kalmarium Apps: Android Games, Learning Apps and Tools",
-             "Nine Android apps and games by Kalmarium Services: daily trivia, mahjong, a tank shooter, language learning, Microsoft exam practice and network tools. On Google Play."),
+    "home": ("Kalmarium Apps: Android Apps and Games by Kalmarium Services",
+             "Nine Android apps and games by Kalmarium Services of Almere, the Netherlands: trivia, mahjong, a tank shooter, language learning, exam practice, network tools."),
+    "about": ("About Kalmarium Services: Android Apps from the Netherlands",
+              "Kalmarium Services B.V. is a small independent studio in Almere, the Netherlands, making Android apps and games for Google Play. Company facts and contact."),
+    "press": ("Kalmarium Apps Press Kit: Icons, Screenshots and Facts",
+              "Press kit for the nine Android apps by Kalmarium Services: icons, screenshots, the developer logo and one-line facts per app, free to use in articles."),
     "games": ("Android Games by Kalmarium: Trivia, Mahjong, Tank Shooter",
-              "Three Android games you can play offline: Knowdrop daily trivia quiz, Mahjong365 mahjong solitaire and Tankageddon, a tank shooter with 99 boss fights. Free to start."),
+              "Three Android games you can play offline: Knowdrop trivia quiz, Mahjong365 solitaire and Tankageddon, a tank shooter with 99 boss fights."),
     "learning": ("Learning Apps for Android: Languages and Microsoft Exams",
                  "Learn words with the Lingua Pairs memory game, read books in two languages with Bilingua, and practise for 47 Microsoft certification exams with Prep 4 Cert."),
     "tools": ("Android Tools and Fun: WiFi Analyzer, Intercom, Fold Prank",
@@ -116,6 +120,9 @@ class Site:
         return ("https://play.google.com/store/apps/details?id=%s&referrer=utm_source%%3Dhub%%26utm_medium%%3D%s"
                 % (a["package"], medium))
 
+    def playpage(self, a):
+        return "https://play.google.com/store/apps/details?id=%s" % a["package"]
+
     def sitelink(self, a, medium):
         base = a["site"]
         return base + ("&" if "?" in base else "?") + "utm_source=hub&utm_medium=" + medium
@@ -141,7 +148,10 @@ def ld_org(s):
     same.append("https://kalmarium.com")
     return {
         "@type": "Organization", "@id": s.url + "/#org", "name": site["org"], "legalName": site["legalName"],
+        "alternateName": ["Kalmarium", "Kalmarium Apps"],
         "url": s.url + "/", "logo": s.abs("brand/dev-icon-512.png"), "email": site["email"],
+        "description": "Independent studio in Almere, the Netherlands, making Android apps and games for Google Play.",
+        "contactPoint": {"@type": "ContactPoint", "email": site["email"], "contactType": "customer support"},
         "address": {"@type": "PostalAddress", "addressLocality": site["city"], "addressCountry": site["country"]},
         "sameAs": same,
     }
@@ -154,11 +164,11 @@ def ld_website(s):
 
 def ld_app(s, a, medium):
     node = {
-        "@type": a["schemaType"], "name": a["name"], "description": a["hook"], "operatingSystem": "Android",
+        "@type": a["schemaType"], "@id": a["site"] + "#app", "name": a["name"], "description": a["hook"], "operatingSystem": "Android",
         "applicationCategory": a["applicationCategory"], "url": a["site"], "installUrl": s.play(a, medium),
         "image": s.abs("img/%s/tile.webp" % a["id"]),
         "offers": {"@type": "Offer", "price": str(a["offerPrice"]), "priceCurrency": a.get("offerCurrency", "EUR")},
-        "author": {"@id": s.url + "/#org"},
+        "author": {"@id": s.url + "/#org"}, "publisher": {"@id": s.url + "/#org"}, "sameAs": [s.playpage(a)],
     }
     if a["schemaType"] == "VideoGame":
         node["gamePlatform"] = "Android"
@@ -176,7 +186,7 @@ def ld_video(s, a):
 
 
 def ld_list(s, apps, medium, pageurl):
-    return {"@type": "ItemList", "@id": pageurl + "#list",
+    return {"@type": "ItemList", "@id": pageurl + "#list", "numberOfItems": len(apps),
             "itemListElement": [{"@type": "ListItem", "position": i + 1, "item": ld_app(s, a, medium)} for i, a in enumerate(apps)]}
 
 
@@ -234,7 +244,9 @@ def masthead(s, page):
         label = NAV_LABEL.get(c["id"], c["label"])
         cur = ' aria-current="page"' if page == c["id"] else ""
         items.append('<li><a href="%s"%s>%s</a></li>' % (E(c["path"]), cur, E(label)))
-    items.append('<li><a href="/#about">About</a></li>')
+    for pid, label in (("about", "About"), ("press", "Press")):
+        cur = ' aria-current="page"' if page == pid else ""
+        items.append('<li><a href="/%s/"%s>%s</a></li>' % (pid, cur, label))
     return (
         '<a class="skip" href="#main">Skip to content</a>\n'
         '<header class="mast"><div class="wrap bar">\n'
@@ -253,7 +265,8 @@ def footer(s, page):
         for a in s.apps)
     browse = ['<li><a href="/">All apps</a></li>']
     browse += ['<li><a href="%s">%s</a></li>' % (E(c["path"]), E(c["label"])) for c in s.cats]
-    browse.append('<li><a href="/#about">About</a></li>')
+    browse.append('<li><a href="/about/">About</a></li>')
+    browse.append('<li><a href="/press/">Press kit</a></li>')
     kal = ['<li><a href="%s">Google Play developer page</a></li>' % E(s.site["playDeveloper"]),
            '<li><a href="https://kalmarium.com">kalmarium.com</a></li>']
     if s.site.get("youtubeChannel"):
@@ -315,7 +328,8 @@ def media_block(s, a, tall_ok=True):
 def buttons(s, a, medium):
     return (
         '<div class="btns">'
-        '<a class="btn play" href="%s" rel="noopener" aria-label="Get it on Google Play: %s">Get it on Google Play</a>'
+        '<a class="play-badge" href="%s" rel="noopener" aria-label="Get it on Google Play: %s">'
+        '<img src="/img/google-play-badge.png" width="646" height="250" alt="Get it on Google Play" loading="lazy" decoding="async"></a>'
         '<a class="btn alt" href="%s" aria-label="More about %s, the %s, on its own website">More about %s</a></div>'
         % (E(s.play(a, medium)), E(a["name"]), E(s.sitelink(a, medium)), E(a["name"]), E(a["descriptor"]), E(a["name"]))
     )
@@ -399,7 +413,7 @@ def lede(s):
         str(NUM.get(s.total, s.total)).capitalize(), listing)
 
 
-def about_html(s):
+def about_html(s, home=True):
     site = s.site
     text = site.get("about")
     if not text:
@@ -411,6 +425,8 @@ def about_html(s):
         h = E(para)
         h = h.replace(E(site["email"]), '<a href="mailto:%s">%s</a>' % (E(site["email"]), E(site["email"])))
         out.append("<p>%s</p>" % h)
+    if home:
+        out.append('<p><a href="/about/">More about Kalmarium Services</a> &middot; <a href="/press/">Press kit</a></p>')
     return "\n".join(out)
 
 
@@ -512,6 +528,118 @@ def page_category(s, c):
     return page_shell(s, cid, title, desc, path, main, graph)
 
 
+def crumbs(label):
+    return ('<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <span aria-current="page">%s</span></nav>' % E(label))
+
+
+def crumb_ld(s, label, path):
+    pageurl = s.url + path
+    return {"@type": "BreadcrumbList", "@id": pageurl + "#crumbs", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": s.url + "/"},
+        {"@type": "ListItem", "position": 2, "name": label, "item": pageurl}]}
+
+
+def page_about(s):
+    site = s.site
+    title, desc = SEO["about"]
+    paras = about_html(s, home=False)
+    rows = "".join(
+        '<tr><th scope="row"><a href="%s">%s</a></th><td data-l="What it does">%s</td><td data-l="Price">%s</td>'
+        '<td data-l="Links"><a href="%s">Website</a> &middot; <a href="%s" rel="noopener">Google Play</a></td></tr>'
+        % (E(s.sitelink(a, "about")), E(a["name"]), E(a["hook"]), E(a["price"]), E(s.sitelink(a, "about")), E(s.play(a, "about")))
+        for a in s.apps)
+    facts = site.get("howWeBuild", [])
+    how = "".join("<li><b>%s.</b> %s</li>" % (E(f["title"]), E(f["text"])) for f in facts)
+    yt = ""
+    if site.get("youtubeChannel"):
+        yt = '<dt>YouTube</dt><dd><a href="%s">@kalmariumservices</a></dd>' % E(site["youtubeChannel"])
+    co = (
+        '<dl class="co"><dt>Legal name</dt><dd>%s</dd><dt>Based in</dt><dd>%s, Netherlands</dd>'
+        '<dt>Email</dt><dd><a href="mailto:%s">%s</a></dd><dt>On Google Play</dt><dd><a href="%s">Kalmarium Services</a></dd>%s'
+        '<dt>Company website</dt><dd><a href="https://kalmarium.com">kalmarium.com</a></dd></dl>'
+        % (E(site["legalName"]), E(site["city"]), E(site["email"]), E(site["email"]), E(site["playDeveloper"]), yt))
+    ai = E(site.get("aiNote") or "Some artwork on this site is AI-generated.")
+    main = (
+        '<div class="wrap phead">\n%s\n<h1>About Kalmarium Services</h1>\n'
+        '<p class="lede">An independent Android studio in Almere, the Netherlands, with nine apps and games on Google Play.</p>\n</div>\n'
+        '<div class="wrap doc wide">\n<h2>Who we are</h2>\n%s\n'
+        '<h2>The nine apps</h2>\n<table class="tbl"><thead><tr><th scope="col">App</th><th scope="col">What it does</th>'
+        '<th scope="col">Price</th><th scope="col">Links</th></tr></thead><tbody>%s</tbody></table>\n'
+        '<h2>How we build</h2>\n<ul class="pts">%s</ul>\n'
+        '<h2>Company facts</h2>\n%s\n'
+        '<h2>Privacy and AI</h2>\n<p>Each app has its own privacy policy on its own website. This website has a short '
+        '<a href="/privacy-policy.html">privacy policy</a> of its own. %s We mark the apps with AI-generated artwork on the <a href="/press/">press page</a>.</p>\n</div>'
+        % (crumbs("About"), paras, rows, how, co, ai))
+    graph = [ld_org(s), ld_website(s),
+             {"@type": "AboutPage", "@id": s.url + "/about/#page", "url": s.url + "/about/", "name": title,
+              "isPartOf": {"@id": s.url + "/#website"}, "about": {"@id": s.url + "/#org"}, "inLanguage": "en"},
+             crumb_ld(s, "About", "/about/")]
+    return page_shell(s, "about", title, desc, "/about/", main, graph)
+
+
+def kb(n):
+    return "%d KB" % max(1, round(n / 1024))
+
+
+def press_files(s, a):
+    """Press-kit files for one app: (label, path, 'W x H', bytes, format)."""
+    out = []
+    items = [("Icon", "img/press/%s/icon-512.png" % a["id"])]
+    items += [("Screenshot %d" % i, "img/press/%s/screenshot-%d.jpg" % (a["id"], i)) for i in (1, 2, 3)]
+    for label, rel in items:
+        p = s.root / rel
+        d = dims(p)
+        n = p.stat().st_size if p.is_file() else 0
+        out.append((label, "/" + rel, "%d x %d" % d if d else "", n, rel.rsplit(".", 1)[1].upper()))
+    return out
+
+
+def fsz(s, rel):
+    p = s.root / rel
+    return p.stat().st_size if p.is_file() else 0
+
+
+def page_press(s):
+    site = s.site
+    title, desc = SEO["press"]
+    blocks = []
+    for a in s.apps:
+        spec = "".join("<div><dt>%s</dt><dd>%s</dd></div>" % (k, v)
+                       for k, v in (("Platform", "Android"), ("Price", E(a["price"])), ("For", E(a["audience"]))))
+        spec += ('<div><dt>Package</dt><dd>%s</dd></div><div><dt>Site</dt><dd><a href="%s">%s</a></dd></div>'
+                 '<div><dt>Play</dt><dd><a href="%s" rel="noopener">%s on Google Play</a></dd></div>'
+                 % (E(a["package"]), E(s.sitelink(a, "press")), E(a["site"].replace("https://", "").rstrip("/")),
+                    E(s.play(a, "press")), E(a["name"])))
+        if a.get("aiArt"):
+            spec += "<div><dt>Art</dt><dd>Some of the artwork is AI-generated.</dd></div>"
+        dl = "".join('<li><a href="%s">%s %s</a>, %s %s, %s</li>' % (E(path), E(a["name"]), label.lower(), dim, fmt, kb(n))
+                     for label, path, dim, n, fmt in press_files(s, a))
+        icon = img_tag(s, "img/%s/icon.webp" % a["id"], a.get("alt", {}).get("icon") or a["name"] + " app icon", (192, 192), force=(56, 56))
+        blocks.append(
+            '<article class="deep" id="%s" aria-labelledby="%s-h" style="--a:%s">\n'
+            '<header class="dh">%s<h2 id="%s-h">%s<span class="d"> - %s</span></h2></header>\n'
+            '<p class="hook">%s</p>\n<dl class="spec">%s</dl>\n<ul class="pts">%s</ul>\n</article>'
+            % (E(a["id"]), E(a["id"]), E(a["accent"]), icon, E(a["id"]), E(a["name"]), E(a["descriptor"]), E(a["hook"]), spec, dl))
+    dev = (
+        '<ul class="pts"><li><a href="/brand/dev-icon-512.png">Developer icon</a>, 512 x 512 PNG, %s</li>'
+        '<li><a href="/brand/play-header-4096x2304.jpg">Developer header</a>, 4096 x 2304 JPG, %s</li>'
+        '<li><a href="/assets/logo.svg">Kalmarium logo</a>, SVG, %s</li></ul>'
+        % (kb(fsz(s, "brand/dev-icon-512.png")), kb(fsz(s, "brand/play-header-4096x2304.jpg")), kb(fsz(s, "assets/logo.svg"))))
+    main = (
+        '<div class="wrap phead">\n%s\n<h1>Press kit</h1>\n'
+        '<p class="lede">Icons, screenshots and plain facts for the nine Android apps by Kalmarium Services. Free to use in articles and reviews about the apps. '
+        'Please do not alter the icons. There are no ratings or download numbers here because we do not publish any.</p>\n</div>\n'
+        '<div class="wrap">\n<section class="deep" aria-labelledby="dev-h">\n<h2 id="dev-h">Kalmarium Services</h2>\n'
+        '<p class="hook">Independent studio in %s, the Netherlands. Apps and games for Android, published on Google Play.</p>\n%s\n'
+        '<p>Press contact: <a href="mailto:%s">%s</a>. More about us on the <a href="/about/">About page</a>.</p>\n</section>\n%s\n</div>'
+        % (crumbs("Press kit"), E(site["city"]), dev, E(site["email"]), E(site["email"]), "\n".join(blocks)))
+    graph = [ld_org(s), ld_website(s),
+             {"@type": "CollectionPage", "@id": s.url + "/press/#page", "url": s.url + "/press/", "name": title,
+              "isPartOf": {"@id": s.url + "/#website"}, "about": {"@id": s.url + "/#org"}, "inLanguage": "en"},
+             crumb_ld(s, "Press kit", "/press/")]
+    return page_shell(s, "press", title, desc, "/press/", main, graph)
+
+
 def page_privacy(s):
     site = s.site
     email = E(site["email"])
@@ -553,11 +681,36 @@ def page_404(s):
                       "/404.html", main, None, noindex=True)
 
 
-def sitemap(s):
-    d = s.lastmod()
-    urls = [s.url + "/"] + [s.url + c["path"] for c in s.cats] + [s.url + "/privacy-policy.html"]
-    body = "".join("  <url><loc>%s</loc><lastmod>%s</lastmod></url>\n" % (u, d) for u in urls)
-    return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n%s</urlset>\n' % body
+def esc_x(v):
+    return html.escape(str(v), quote=False)
+
+
+def sitemap(s, pages):
+    """pages: list of (url, html text). lastmod moves only when a page's text changes (ledger in data/lastmod.json)."""
+    import hashlib
+    ledger_p = s.root / "data" / "lastmod.json"
+    ledger = json.loads(ledger_p.read_text(encoding="utf-8")) if ledger_p.is_file() else {}
+    today = datetime.date.today().isoformat()
+    out = {}
+    body = []
+    for url, text in pages:
+        h = hashlib.sha256(text.encode("utf-8")).hexdigest()[:16]
+        old = ledger.get(url)
+        out[url] = old if old and old["hash"] == h else {"hash": h, "date": today}
+        vids = ""
+        cat = next((c for c in s.cats if s.url + c["path"] == url), None)
+        for a in s.apps:
+            v = a.get("video")
+            if v and (url == s.url + "/" or (cat and a["category"] == cat["id"])):
+                vids += ("<video:video><video:thumbnail_loc>%s</video:thumbnail_loc><video:title>%s</video:title>"
+                         "<video:description>%s</video:description><video:content_loc>%s</video:content_loc>"
+                         "<video:duration>%d</video:duration><video:publication_date>%s</video:publication_date></video:video>"
+                         % (esc_x(s.abs(v["poster"])), esc_x(v.get("title") or a["name"] + " video"), esc_x(v.get("description") or a["hook"]),
+                            esc_x(s.abs(v["file"])), int(v.get("duration") or 0), esc_x(v["uploadDate"])))
+        body.append("  <url><loc>%s</loc><lastmod>%s</lastmod>%s</url>\n" % (url, out[url]["date"], vids))
+    text = ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+            'xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">\n%s</urlset>\n' % "".join(body))
+    return text, json.dumps(out, indent=1, sort_keys=True) + "\n"
 
 
 def write(root, rel, text):
@@ -580,9 +733,17 @@ def main(argv=None):
         print("ERROR: %s not found" % data, file=sys.stderr)
         return 2
     s = Site(root, data)
-    outputs = {"index.html": page_home(s), "privacy-policy.html": page_privacy(s), "404.html": page_404(s), "sitemap.xml": sitemap(s)}
+    outputs = {"index.html": page_home(s), "about/index.html": page_about(s), "press/index.html": page_press(s),
+               "privacy-policy.html": page_privacy(s), "404.html": page_404(s)}
     for c in s.cats:
         outputs[c["path"].strip("/") + "/index.html"] = page_category(s, c)
+    order = ["index.html"] + [c["path"].strip("/") + "/index.html" for c in s.cats] + ["about/index.html", "press/index.html", "privacy-policy.html"]
+    urls = {"index.html": "/", "about/index.html": "/about/", "press/index.html": "/press/", "privacy-policy.html": "/privacy-policy.html"}
+    for c in s.cats:
+        urls[c["path"].strip("/") + "/index.html"] = c["path"]
+    sm, ledger = sitemap(s, [(s.url + urls[r], outputs[r]) for r in order])
+    outputs["sitemap.xml"] = sm
+    outputs["data/lastmod.json"] = ledger
     for rel, text in outputs.items():
         changed = write(root, rel, text)
         print("%-24s %6d bytes%s" % (rel, len(text.encode("utf-8")), "" if changed else " (unchanged)"))

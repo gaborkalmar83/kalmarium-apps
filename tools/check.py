@@ -29,7 +29,8 @@ REPO = Path(__file__).resolve().parent.parent
 SITE = "https://apps.kalmarium.com"
 VISIT_SRC = "https://overwatch.kalmarium.com/h.js"
 ADS_LINE = "google.com, pub-6479185943494314, DIRECT, f08c47fec0942fa0"
-PAGES = ["index.html", "games/index.html", "learning/index.html", "tools/index.html", "privacy-policy.html", "404.html"]
+PAGES = ["index.html", "games/index.html", "learning/index.html", "tools/index.html", "about/index.html", "press/index.html",
+         "privacy-policy.html", "404.html"]
 CAT_PAGES = {"games": "games/index.html", "learning": "learning/index.html", "tools": "tools/index.html"}
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
 BUDGET = {"css": 14 * 1024, "js": 3 * 1024, "html": 40 * 1024, "icon": 12 * 1024, "tile": 60 * 1024,
@@ -221,7 +222,8 @@ def all_files(root):
 def test_build_current(root, data):
     import build
     s = build.Site(root, root / "data" / "apps.json")
-    expect = {"index.html": build.page_home(s), "privacy-policy.html": build.page_privacy(s), "404.html": build.page_404(s)}
+    expect = {"index.html": build.page_home(s), "about/index.html": build.page_about(s), "press/index.html": build.page_press(s),
+              "privacy-policy.html": build.page_privacy(s), "404.html": build.page_404(s)}
     for c in s.cats:
         expect[c["path"].strip("/") + "/index.html"] = build.page_category(s, c)
     bad = []
@@ -254,7 +256,8 @@ def test_static_files(root, data):
         bad.append("sitemap.xml missing")
     else:
         locs = re.findall(r"<loc>([^<]+)</loc>", sm.read_text())
-        want = [SITE + "/", SITE + "/games/", SITE + "/learning/", SITE + "/tools/", SITE + "/privacy-policy.html"]
+        want = [SITE + "/", SITE + "/games/", SITE + "/learning/", SITE + "/tools/", SITE + "/about/", SITE + "/press/",
+                SITE + "/privacy-policy.html"]
         if locs != want:
             bad.append("sitemap.xml lists %s, expected %s" % (locs, want))
         if not re.search(r"<lastmod>\d{4}-\d\d-\d\d</lastmod>", sm.read_text()):
@@ -456,7 +459,7 @@ def test_jsonld(root, data, docs):
     apps_by_cat = {}
     for a in data["apps"]:
         apps_by_cat.setdefault(a["category"], []).append(a)
-    for rel in ["index.html"] + list(CAT_PAGES.values()) + ["privacy-policy.html"]:
+    for rel in ["index.html"] + list(CAT_PAGES.values()) + ["about/index.html", "press/index.html", "privacy-policy.html"]:
         d = docs.get(rel)
         if d is None:
             continue
@@ -663,6 +666,15 @@ def test_weight(root, data, docs):
             need(v["poster"], BUDGET["poster"], "poster 45 KB", size=(800, 450))
             if v.get("duration", 0) > 60:
                 bad.append("%s video longer than 60 s" % i)
+    n = fsize(root, "img/google-play-badge.png")
+    if n is None:
+        bad.append("missing img/google-play-badge.png (official badge, copy of factory brand/google-play-badge-en.png)")
+    elif dims(root / "img/google-play-badge.png") != (646, 250):
+        bad.append("img/google-play-badge.png is not 646x250")
+    for a in data["apps"]:
+        need("img/press/%s/icon-512.png" % a["id"], 1024 * 1024, "press file 1 MB", size=(512, 512))
+        for k in (1, 2, 3):
+            need("img/press/%s/screenshot-%d.jpg" % (a["id"], k), 1024 * 1024, "press file 1 MB")
     for rel, size in (("assets/favicon.png", (64, 64)), ("assets/apple-touch-icon.png", (180, 180)), ("brand/dev-icon-512.png", (512, 512))):
         n = fsize(root, rel)
         if n is None:
@@ -750,7 +762,8 @@ def test_a11y(root, docs):
 def test_head(root, data, docs):
     bad = []
     expected = {"index.html": "/", "games/index.html": "/games/", "learning/index.html": "/learning/",
-                "tools/index.html": "/tools/", "privacy-policy.html": "/privacy-policy.html", "404.html": "/404.html"}
+                "tools/index.html": "/tools/", "about/index.html": "/about/", "press/index.html": "/press/",
+                "privacy-policy.html": "/privacy-policy.html", "404.html": "/404.html"}
     for rel, path in expected.items():
         d = docs.get(rel)
         if d is None:
@@ -787,7 +800,7 @@ def test_head(root, data, docs):
                 bad.append("%s line %d: img alt empty" % (rel, ln))
         if rel == "404.html" and d.meta("robots") != "noindex":
             bad.append("404.html should be noindex")
-    ok_or_fail("T11", bad, "title 25-65, description 70-170, one H1, self canonical, Open Graph, Twitter, theme-color, alt text on all 6 pages")
+    ok_or_fail("T11", bad, "title 25-65, description 70-170, one H1, self canonical, Open Graph, Twitter, theme-color, alt text on all %d pages" % len(expected))
 
 
 HYPE = re.compile(r"loved by|thousands of|millions of|best[- ]selling|#1\b|top[- ]rated|five[- ]star|\b5[- ]stars?\b|\d[\d,.]*\+? (?:downloads|installs|users)|award[- ]winning|trusted by|\u2605", re.I)
@@ -814,6 +827,43 @@ def test_honesty(root, data, docs):
         bad.append("home: 'no forced subscription' wording missing")
     ok_or_fail("T12", bad, "no ratings or popularity claims; Microsoft disclaimer next to Prep 4 Cert; AI-art line matches aiArt")
     rec("SKIP", "T12", "manual: compare each price and ads line with the app's Play listing on launch day")
+
+
+def test_brand_rules(root, docs):
+    """WP-04 rules: About and Press linked from every page, one spelling of the company, a complete Organization node."""
+    bad = []
+    legacy = "Kalmarium Services " + "BV"
+    for rel, d in docs.items():
+        hrefs = {a.get("href") for a, _ in d.of("a")}
+        for need_ in ("/about/", "/press/"):
+            if need_ not in hrefs:
+                bad.append("%s: link to %s missing" % (rel, need_))
+        if legacy in d.src or "Kalmarium BV" in d.src:
+            bad.append("%s: wrong company spelling (use Kalmarium Services or Kalmarium Services B.V.)" % rel)
+        orgs = 0
+        for block in d.ld:
+            try:
+                nodes = list(walk(json.loads(block)))
+            except ValueError:
+                continue
+            for n in nodes:
+                if n.get("@type") == "Organization":
+                    orgs += 1
+                    if not n.get("alternateName"):
+                        bad.append("%s: Organization node without alternateName" % rel)
+                    if n.get("@id") != SITE + "/#org":
+                        bad.append("%s: Organization @id is %s" % (rel, n.get("@id")))
+                    if n.get("legalName") != "Kalmarium Services B.V.":
+                        bad.append("%s: Organization legalName must be Kalmarium Services B.V." % rel)
+                if n.get("@type") in ("VideoGame", "MobileApplication"):
+                    if not str(n.get("@id", "")).endswith("/#app"):
+                        bad.append("%s: app node %s without @id https://<host>/#app" % (rel, n.get("name")))
+        if d.ld and orgs != 1:
+            bad.append("%s: %d Organization nodes, expected 1" % (rel, orgs))
+    for rel in ("data/apps.json", "tools/build.py"):
+        if legacy in (root / rel).read_text(encoding="utf-8"):
+            bad.append("%s: wrong company spelling" % rel)
+    ok_or_fail("T14", bad, "About and Press linked on every page; one company spelling; one Organization node with alternateName, @id and legalName; app nodes carry #app ids")
 
 
 def test_data(root, data):
@@ -865,8 +915,8 @@ def fetch(url, timeout=25):
 
 def test_live(root, data, docs):
     bad = []
-    targets = [SITE + "/", SITE + "/games/", SITE + "/learning/", SITE + "/tools/", SITE + "/privacy-policy.html",
-               SITE + "/robots.txt", SITE + "/sitemap.xml", SITE + "/app-ads.txt", SITE + "/og.jpg", SITE + "/assets/site.css",
+    targets = [SITE + "/", SITE + "/games/", SITE + "/learning/", SITE + "/tools/", SITE + "/about/", SITE + "/press/",
+               SITE + "/privacy-policy.html", SITE + "/img/google-play-badge.png", SITE + "/robots.txt", SITE + "/sitemap.xml", SITE + "/app-ads.txt", SITE + "/og.jpg", SITE + "/assets/site.css",
                SITE + "/assets/site.js", SITE + "/assets/favicon.png", SITE + "/assets/apple-touch-icon.png", SITE + "/brand/dev-icon-512.png"]
     for a in data["apps"]:
         targets += [SITE + "/img/%s/icon.webp" % a["id"], SITE + "/img/%s/tile.webp" % a["id"]]
@@ -883,7 +933,7 @@ def test_live(root, data, docs):
     # live bytes equal the repo
     diff = []
     compared = 0
-    for rel, path in (("index.html", "/"), ("games/index.html", "/games/"), ("learning/index.html", "/learning/"), ("tools/index.html", "/tools/"), ("privacy-policy.html", "/privacy-policy.html")):
+    for rel, path in (("index.html", "/"), ("games/index.html", "/games/"), ("learning/index.html", "/learning/"), ("tools/index.html", "/tools/"), ("about/index.html", "/about/"), ("press/index.html", "/press/"), ("privacy-policy.html", "/privacy-policy.html")):
         st, _, body = res.get(SITE + path, (0, "", b""))
         if st == 200 and body.decode("utf-8", "replace").replace("\r\n", "\n") != read(root, rel):
             diff.append(rel)
@@ -955,6 +1005,7 @@ def main():
         test_a11y(root, docs)
         test_head(root, data, docs)
         test_honesty(root, data, docs)
+        test_brand_rules(root, docs)
         skip_manual()
         if args.live:
             test_live(root, data, docs)

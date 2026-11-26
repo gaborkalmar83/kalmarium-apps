@@ -1,0 +1,30 @@
+{
+ "https://apps.kalmarium.com/": {
+  "date": "2026-11-26",
+  "hash": "97cdd2afd612cb57"
+ },
+ "https://apps.kalmarium.com/about/": {
+  "date": "2026-11-26",
+  "hash": "da22ab7ddaec331e"
+ },
+ "https://apps.kalmarium.com/games/": {
+  "date": "2026-11-26",
+  "hash": "4a1c008a4fcae94e"
+ },
+ "https://apps.kalmarium.com/learning/": {
+  "date": "2026-11-26",
+  "hash": "47a0f441f6be1b2e"
+ },
+ "https://apps.kalmarium.com/press/": {
+  "date": "2026-11-26",
+  "hash": "4d52718af2be1746"
+ },
+ "https://apps.kalmarium.com/privacy-policy.html": {
+  "date": "2026-11-26",
+  "hash": "bf05c8ebfb8be4f1"
+ },
+ "https://apps.kalmarium.com/tools/": {
+  "date": "2026-11-26",
+  "hash": "4e14db4c8dd84451"
+ }
+}
