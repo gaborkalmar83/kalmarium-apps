@@ -908,7 +908,7 @@ def fetch(url, timeout=25):
         with urllib.request.urlopen(req, timeout=timeout) as r:
             return r.status, r.geturl(), r.read(600000)
     except urllib.error.HTTPError as e:
-        return e.code, url, b""
+        return e.code, url, e.read(600000)
     except Exception as e:  # noqa: BLE001
         return 0, url, str(e).encode()
 
